@@ -23,7 +23,7 @@ if __name__ == "__main__":
     # Deteccion de shocks
     shocks_diarios = identify_daily_shocks(df_gmexico, threshold=0.15)
 
-    # Resultados separados por subidas y bajadas
+    # Resultados por subidas y bajadas
     print("\n--- PRINCIPALES SALTOS DIARIOS (>15%) ---")
     print(shocks_diarios[shocks_diarios['daily_return'] > 0][['adj_close', 'daily_return']])
 
