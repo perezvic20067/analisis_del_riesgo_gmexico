@@ -84,7 +84,7 @@ if __name__ == "__main__":
     # Gráfica 2 con comparación con el IPC
     df_gmexico_aligned, df_ipc_aligned = df_gmexico.align(df_ipc, join='inner', axis=0)
 
-    # Recalculamos
+    # Recalculo
     df_gmexico_aligned['cumulative_return'] = (1 + df_gmexico_aligned['simple_return']).cumprod()
     df_ipc_aligned['cumulative_return'] = (1 + df_ipc_aligned['simple_return']).cumprod()
 
