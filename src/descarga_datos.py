@@ -8,9 +8,8 @@ def fetch_historical_data(ticker, filename):
     stock = yf.Ticker(ticker)
     raw_data = stock.history(period="max")
 
-    # Verificamos que la tabla no este vacia por fallos de red
+    # Verificamos que la tabla no este vacia
     if raw_data.empty:
-        print(f"Error: No data found for {ticker}")
         return None
 
     # history() ya entrega la columna 'Close' ajustada por splits y dividendos
@@ -22,7 +21,7 @@ def fetch_historical_data(ticker, filename):
     if clean_data.index.tz is not None:
         clean_data.index = clean_data.index.tz_localize(None)
 
-    # Ruta para guardar el archivo
+    # Guardar el archivo
     save_path = os.path.join("..", "datos_historicos", f"{filename}.csv")
 
     clean_data.to_csv(save_path)
