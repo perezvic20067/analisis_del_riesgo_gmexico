@@ -5,7 +5,7 @@ import os
 
 def calculate_returns(filepath):
 
-    # Carga el CSV estableciendo la fecha como el indice de la tabla
+    # Carga datos estableciendo la fecha como el indice de la tabla
     df = pd.read_csv(filepath, index_col='Date', parse_dates=True)
 
     # 1. Rendimiento Simple: (Precio de hoy - Precio de ayer) / Precio de ayer
@@ -24,7 +24,6 @@ def calculate_returns(filepath):
 
 
 if __name__ == "__main__":
-    # Construye la ruta hacia los CSVs que descargamos en el script anterior
     gmexico_path = os.path.join("..", "datos_historicos", "gmexico_prices.csv")
     ipc_path = os.path.join("..", "datos_historicos", "ipc_prices.csv")
 
@@ -33,5 +32,5 @@ if __name__ == "__main__":
     df_ipc = calculate_returns(ipc_path)
 
     print("\nRendimientos de los ultimos 5 días:")
-    # Imprimimos los ultimos 5 dias (tail) para ver el rendimiento acumulado mas reciente
+    # Imprimimos los ultimos 5 dias para ver el rendimiento acumulado mas reciente
     print(df_gmexico[['adj_close', 'simple_return', 'log_return', 'cumulative_return']].tail())
