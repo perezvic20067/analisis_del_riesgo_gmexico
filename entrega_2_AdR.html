@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Entrega 2 | Análisis GMEXICOB</title>
+    <!-- Script para renderizar las fórmulas matemáticas en LaTeX -->
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background-color: #f3f4f6;
+            margin: 0;
+            padding: 20px;
+        }
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            background-color: #ffffff;
+            padding: 40px;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+        }
+        h1 {
+            color: #1e3a8a;
+            border-bottom: 3px solid #1e3a8a;
+            padding-bottom: 10px;
+            margin-bottom: 30px;
+            text-align: center;
+        }
+        h2 {
+            color: #2563eb;
+            margin-top: 40px;
+            border-bottom: 1px solid #e5e7eb;
+            padding-bottom: 5px;
+        }
+        h3 {
+            color: #1e40af;
+            margin-top: 25px;
+        }
+        p {
+            margin-bottom: 15px;
+            text-align: justify;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+            font-size: 0.95em;
+        }
+        th, td {
+            border: 1px solid #d1d5db;
+            padding: 12px;
+            text-align: left;
+        }
+        th {
+            background-color: #f9fafb;
+            color: #111827;
+            font-weight: 600;
+        }
+        tr:nth-child(even) {
+            background-color: #f9fafb;
+        }
+        .definitions {
+            font-size: 0.85em;
+            color: #4b5563;
+            background-color: #f3f4f6;
+            padding: 15px;
+            border-left: 4px solid #3b82f6;
+            margin-top: 20px;
+        }
+        .definitions p {
+            margin-bottom: 8px;
+            text-align: left;
+        }
+        .references {
+            word-break: break-all;
+            font-size: 0.9em;
+            background-color: #f9fafb;
+            padding: 20px;
+            border-radius: 6px;
+        }
+        .references p {
+            margin-bottom: 10px;
+            text-align: left;
+        }
+        ul {
+            margin-bottom: 20px;
+        }
+        li {
+            margin-bottom: 8px;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h1>ENTREGA 2</h1>
+
+    <!-- PARTE 1 -->
+    <section>
+        <h2>PARTE 1 | Precios y Rendimientos</h2>
+        
+        <h3>¿Qué se hizo?</h3>
+        <p>Se construyó la base de datos histórica del precio diario de GMEXICOB desde el año 2000 hasta hoy, se calcularon tres tipos de rendimiento (simple, logarítmico y acumulado), y se identificaron los períodos donde el precio tuvo movimientos importantes.</p>
+        
+        <h3>¿Cómo se hizo?</h3>
+        <p>Se descargó el precio ajustado diario y, con él, se calculó cuánto ganaba o perdía la acción de un día a otro, y cuánto habría crecido una inversión de $1 hecha desde el inicio. Después se revisó visualmente la gráfica del precio completo para marcar los tramos donde hubo periodos de alza, caídas fuertes o zonas donde el precio se quedó estancado sin moverse mucho (consolidación).</p>
+        
+        <h3>¿Qué resultados se alcanzaron?</h3>
+        <p>Se identificaron 10 períodos significativos en los 26 años de historia de la acción. El más notable es el más reciente: desde finales de 2022 hasta hoy, GMEXICOB ha subido más de 260%, impulsada por el llamado "superciclo del cobre" (período prolongado, de más de una década, en el que los precios del cobre se mantienen muy altos y por encima de su promedio histórico debido a un aumento masivo en la demanda global que la oferta no alcanza a cubrir rápidamente). El peor tramo fue la Crisis Subprime de 2008, donde la acción cayó casi 66% en solo 6 meses.</p>
+        
+        <h3>Tabla de períodos significativos resumida</h3>
+        <table>
+            <thead>
+                <tr>
+                    <th>#</th>
+                    <th>Inicio</th>
+                    <th>Fin</th>
+                    <th>Magnitud</th>
+                    <th>Duración</th>
+                    <th>Patrón</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr><td>1</td><td>2000-01-03</td><td>2003-04-01</td><td>-71.0%</td><td>~39 meses</td><td>Consolidación en mínimos</td></tr>
+                <tr><td>2</td><td>2003-04-01</td><td>2008-05-30</td><td>+2,105.1%</td><td>~62 meses</td><td>Canal alcista</td></tr>
+                <tr><td>3</td><td>2008-05-30</td><td>2008-11-28</td><td>-65.6%</td><td>~6 meses</td><td>Colapso</td></tr>
+                <tr><td>4</td><td>2008-11-28</td><td>2011-04-01</td><td>+459.1%</td><td>~28 meses</td><td>Recuperación en V</td></tr>
+                <tr><td>5</td><td>2011-04-01</td><td>2015-12-31</td><td>-5.1%</td><td>~57 meses</td><td>Consolidación bajista</td></tr>
+                <tr><td>6</td><td>2015-12-31</td><td>2018-01-15</td><td>+86.4%</td><td>~25 meses</td><td>Recuperación</td></tr>
+                <tr><td>7</td><td>2018-01-15</td><td>2020-03-23</td><td>-37.4%</td><td>~26 meses</td><td>Caída (guerra comercial + COVID)</td></tr>
+                <tr><td>8</td><td>2020-03-23</td><td>2021-04-30</td><td>+161.7%</td><td>~13 meses</td><td>Rebote post-COVID</td></tr>
+                <tr><td>9</td><td>2021-04-30</td><td>2022-12-30</td><td>-16.2%</td><td>~20 meses</td><td>Consolidación</td></tr>
+                <tr><td>10</td><td>2022-12-30</td><td>2026-09-14</td><td>+263.5%</td><td>~45 meses</td><td>Rally secular (nearshoring/cobre)</td></tr>
+            </tbody>
+        </table>
+
+        <div class="definitions">
+            <p><strong>*Consolidación en mínimo:</strong> fase de mercado lateral donde el precio se estabiliza en la parte baja de un rango tras una caída.</p>
+            <p><strong>*Recuperación en V:</strong> rápida y enérgica recuperación económica después de una recesión, representada por una línea descendente seguida de una ascensión en forma de "V".</p>
+            <p><strong>*Consolidación:</strong> el precio de un activo se mueve lateralmente dentro de un rango determinado. Los compradores y vendedores están en equilibrio.</p>
+        </div>
+    </section>
+
+    <!-- PARTE 2 -->
+    <section>
+        <h2>PARTE 2 | GMEXICOB y el PIB de México</h2>
+        
+        <h3>¿Qué se hizo?</h3>
+        <p>Se comparó cómo se mueve el precio de GMEXICOB cada año contra cómo crece la economía mexicana (el PIB) ese mismo año, para saber si la acción "sigue" o no a la economía del país.</p>
+        
+        <h3>¿Cómo se hizo?</h3>
+        <p>Se calculó el rendimiento anual de la acción de 2001 a 2025 y se comparó contra el crecimiento anual del PIB de México en esos mismos años, usando una regresión lineal y el coeficiente de correlación de Pearson (qué tan fuerte es esa relación en una escala de -1 a +1).</p>
+        
+        <h3>¿Qué resultados se alcanzaron?</h3>
+        <p>La relación resultó negativa y débil $ (R = -0.37, R^2 = 0.13) $, y no es estadísticamente confiable ($ p = 0.07 $, por encima del umbral típico de 0.05). Básicamente, no hay evidencia de que un buen año para la economía mexicana signifique un buen año para GMEXICOB, ni viceversa.</p>
+        <p>Esto tiene una explicación lógica: Grupo México es una minera de cobre que vende su producto en dólares a un mercado global (sobre todo a China y Estados Unidos), no una empresa que vive del consumo interno mexicano. Un ejemplo claro fue que durante el 2009, la economía mexicana se desplomó -6.3% (una de las peores crisis en décadas); la acción subió +255%, porque el precio del cobre se disparó por los estímulos económicos de China. Ese mismo patrón se repite, en menor grado, en otros años.</p>
+        <p>Al revisar si la acción se adelanta o se atrasa respecto al PIB, se encontró una señal débil (correlación $ \approx 0.38 $) de que un buen año para GMEXICOB podría anticipar, un poco, mejor actividad económica al año siguiente, probablemente porque el sector minero-exportador reacciona primero a la demanda global que el resto de la economía. Pero es una señal débil, no una relación que se pueda usar para predecir con confianza.</p>
+        
+        <h3>Conclusión</h3>
+        <p>El precio de GMEXICOB está gobernado principalmente por el ciclo global del cobre (demanda de China, aranceles, fuerza del dólar), mucho más que por el desempeño de la economía mexicana. El PIB de México le afecta de forma indirecta, vía tipo de cambio, costos laborales, marco regulatorio, pero no es lo que mueve su cotización.</p>
+    </section>
+
+    <!-- PARTE 3 -->
+    <section>
+        <h2>PARTE 3 | Situación Actual</h2>
+        
+        <h3>¿Qué se hizo?</h3>
+        <p>Se analizó el entorno económico actual de México, los resultados financieros más recientes de la empresa, su estructura corporativa, su política de dividendos/splits y los riesgos a los que está expuesta, para entender qué podría afectar el precio de la acción en el futuro cercano.</p>
+        
+        <h3>¿Cómo se hizo?</h3>
+        <p>Se comparó el PIB, la inflación y la tasa de interés de referencia de México hoy contra hace 1 año y hace 3 años. Se armó una tabla con la utilidad neta y las ganancias por acción (EPS) de los últimos 4 trimestres reportados. Y se revisó el precio de la acción en los últimos 12 meses para identificar cómo reaccionó ante eventos importantes (noticias sobre aranceles, máximos históricos, etc.).</p>
+        
+        <table>
+            <thead>
+                <tr>
+                    <th>Indicador</th>
+                    <th>Hoy (ago-sept 2026)</th>
+                    <th>Hace 1 año (sept 2025)</th>
+                    <th>Hace 3 años (sept 2023)</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr><td>PIB (var. anual más reciente)</td><td>+2.1%</td><td>~-0.2%</td><td>+3.4%</td></tr>
+                <tr><td>Inflación anual general</td><td>3.26%</td><td>3.74%</td><td>4.45%</td></tr>
+                <tr><td>Tasa de referencia (Banxico)</td><td>6.50%</td><td>7.50%</td><td>11.25%</td></tr>
+            </tbody>
+        </table>
+        
+        <p>México pasó de un ciclo restrictivo (tasa al 11.25% en 2023 para frenar una inflación de casi 4.5%) a uno de relajación: Banxico bajó la tasa 475 puntos base hasta 6.50%, y la inflación ya está cerca de su meta de 3%. La economía sigue floja, pero no en contracción: 2025 cerró creciendo apenas 0.5%, y aunque el primer trimestre de 2026 se contrajo, el segundo trimestre sorprendió con +2.1% anual. México está en una expansión débil, no en recesión.</p>
+
+        <h3>Resultados financieros recientes (últimos 4 trimestres)</h3>
+        <table>
+            <thead>
+                <tr>
+                    <th>Trimestre</th>
+                    <th>Utilidad Neta Controladora (miles USD)</th>
+                    <th>EPS (USD)</th>
+                    <th>YoY Utilidad</th>
+                    <th>YoY EPS</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr><td>3T2025</td><td>1,209,125</td><td>0.1553</td><td>+20.2%</td><td>+20.3%</td></tr>
+                <tr><td>4T2025</td><td>1,343,164</td><td>0.1725</td><td>+77.5%</td><td>+77.5%</td></tr>
+                <tr><td>1T2026</td><td>1,637,777</td><td>0.2103</td><td>+62.3%</td><td>+62.3%</td></tr>
+                <tr><td>2T2026</td><td>2,093,138</td><td>0.2688</td><td>+90.9%</td><td>+90.9%</td></tr>
+            </tbody>
+        </table>
+        <p class="notes">*Las ventas y los márgenes (bruto/operativo) solo se pudieron confirmar para 2T2025 y 2T2026; los otros trimestres se completaron con los reportes oficiales de gmexico.com</p>
+
+        <h3>Estructura corporativa</h3>
+        <p>Grupo México opera tres divisiones: Minería (vía Southern Copper y Asarco, con las mayores reservas de cobre del mundo), Transporte (Ferromex/Ferrosur, la red ferroviaria más grande de México) e Infraestructura (energía, construcción, y la reciente adquisición de Planigrupo). Cotiza en la BMV desde 1966, con 7,785 millones de acciones en circulación.</p>
+
+        <h3>Dividendos y splits</h3>
+        <p>La empresa paga dividendos trimestrales de forma consistente, con un rendimiento histórico de entre 2% y 5% anual. Ha hecho dos splits directos (mayo 2005 y junio 2008), ambos para abaratar el precio nominal de la acción y facilitar su compra tras rallies fuertes del cobre.</p>
+
+        <h3>Matriz de riesgos</h3>
+        <ul>
+            <li><strong>Riesgo de mercado:</strong> depende del precio internacional del cobre, su principal fuente de ingresos.</li>
+            <li><strong>Riesgo ambiental/regulatorio:</strong> antecedentes graves como los derrames en los ríos Bacanuchi-Sonora (2014) y el Mar de Cortés (2019).</li>
+            <li><strong>Riesgo laboral:</strong> conflictos con el sindicato minero que han detenido operaciones en minas clave como Cananea.</li>
+            <li><strong>Riesgo geopolítico/comercial:</strong> opera activos transfronterizos bajo el T-MEC en un momento de incertidumbre arancelaria entre México y EE.UU.</li>
+        </ul>
+
+        <h3>Últimos 12 meses: eventos y reacción del precio</h3>
+        <table>
+            <thead>
+                <tr>
+                    <th>Fecha</th>
+                    <th>Evento</th>
+                    <th>Reacción a 5 días</th>
+                    <th>Reacción a 10 días</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr><td>15-ene-2026</td><td>Amenaza de aranceles de EE.UU. al cobre</td><td>-0.6%</td><td>+7.6%</td></tr>
+                <tr><td>02-jun-2026</td><td>Máximo histórico BMV ($220.73)</td><td>-8.3%</td><td>-2.5%</td></tr>
+                <tr><td>25-ago-2026</td><td>Nuevo máximo histórico BMV ($237.83)</td><td>-5.4%</td><td>-3.1%</td></tr>
+            </tbody>
+        </table>
+
+        <h3>¿Qué resultados se alcanzaron?</h3>
+        <p>El mercado reaccionó a la amenaza de aranceles con una subida sostenida (el cobre se encareció por la compra anticipada de inventario en EE.UU.), mientras que ambos máximos históricos fueron seguidos por toma de utilidades de entre -3% y -8% en los 10 días posteriores, una corrección típica después de un pico. Con la acción ya habiendo subido más de 260% desde 2023. El mercado del cobre está en un nivel muy frágil donde cualquier mala noticia desatará una fuerte caída.</p>
+    </section>
+
+    <!-- Referencias -->
+    <section>
+        <h2>Referencias APA</h2>
+        <div class="references">
+            <p>(S/f) Org.mx. Recuperado el 18 de septiembre de 2026, de https://www.banxico.org.mx/publicaciones-y-prensa/presentaciones/%7B33603B8A-EDC3-44D2-BD88-1C9C84E14123%7D.pdf</p>
+            <p>(S/f-b). Mexicocomovamos.mx. Recuperado el 18 de septiembre de 2026, de https://mexicocomovamos.mx/publicaciones/2026/09/la-inflacion-se-acelero-a-3-26-en-agosto-pero-la-subyacente-continuo-moderandose/</p>
+            <p>Acevedo, C. Á. (2023, octubre 9). Inflación en México llega a 4.45% en septiembre de 2023; liga ocho meses a la baja. Semanario ZETA. https://zetatijuana.com/2023/10/inflacion-en-mexico-llega-a-4-45-en-septiembre-de-2023-liga-ocho-meses-a-la-baja/</p>
+            <p>Banxico recorta tasa a 7.50% y el peso mexicano continúa su depreciación frente al dólar. (2025, septiembre 25). XTB Latinoamérica. https://www.xtb.com/lat/analisis-y-noticias/analisis-de-mercado/banxico-recorta-tasa-a-7-50-y-el-peso-mexicano-continua-su-depreciacion-frente-al-dolar</p>
+            <p>Ramírez, M. (2026, agosto 6). Banco de México decide "congelar" su tasa de interés en 6.5% por segunda vez consecutiva. Grupo Milenio. https://www.milenio.com/negocios/banxico-mantiene-tasa-interes-agosto-2026</p>
+            <p>Martínez, A. (2026, mayo 8). Banxico concluye ciclo de recortes a la tasa de referencia: Queda en 6.5 por ciento. El Financiero. https://www.elfinanciero.com.mx/economia/2026/05/08/banxico-concluye-ciclo-de-recortes-a-la-tasa-de-referencia-queda-en-65-por-ciento/</p>
+            <p>(S/f-c) Bloomberg.com. Recuperado el 18 de septiembre de 2026, de https://www.bloomberg.com/latam/blog/un-nuevo-superciclo-de-materias-primas/</p>
+            <p>LOS SUPERCICLOS DEL PRECIO DEL COBRE. (2017, agosto 17). Costa Magazine. https://costamagazine.cl/los-superciclos-del-precio-del-cobre/</p>
+            <p>Argentinas, A. N. (2024, 25 marzo). ¿Qué es la recuperación en V en la economía? Agencia Noticias Argentinas. https://noticiasargentinas.com/economia/-que-es-la-recuperacion-en-v-en-la-economia-a6601b073a9b66cd5759e7e1b</p>
+            <p>Anthropic. (2026). Claude (Sonnet 5) [Modelo de lenguaje de gran escala]. https://claude.ai</p>
+        </div>
+    </section>
+</div>
+
+</body>
+</html>
